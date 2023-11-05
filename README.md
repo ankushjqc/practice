@@ -19,12 +19,16 @@ This is some introductory text for your document.
 Below is a sequence diagram showing a simple interaction between two participants, Alice and Bob.
 
 ```mermaid
-sequenceDiagram
-    Alice ->> Bob: Hello, Bob!
-    Bob -->> Alice: Hi, Alice!
 flowchart TD
     A[Christmas] -->|Get money| B(Go shopping)
     B --> C{Let me think}
     C -->|One| D[Laptop]
     C -->|Two| E[iPhone]
     C -->|Three| F[fa:fa-car Car]
+```
+
+```mermaid
+sequenceDiagram
+    Alice ->> Bob: Hello, Bob!
+    Bob -->> Alice: Hi, Alice!
+```
