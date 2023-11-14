@@ -28,7 +28,7 @@ jobs:
             const { data } = await github.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              workflow_id: 'Name of Second Workflow',
+              workflow_id: 'Deploy',
               ref: 'main'  // Adjust the branch if needed
             });
             console.log('Workflow run triggered:', data);      
