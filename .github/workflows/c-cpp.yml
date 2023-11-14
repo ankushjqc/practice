@@ -26,20 +26,20 @@ jobs:
       run: make 
     
     - name: Get workflow run token
-        id: get_token
-        run: echo "::set-output name=token::${{ secrets.GITHUB_TOKEN }}"
+      id: get_token
+      run: echo "::set-output name=token::${{ secrets.GITHUB_TOKEN }}"
     - name: Trigger Second Workflow
         uses: actions/github-script@v6
-        with:
-          github-token: ${{ steps.get_token.outputs.token }}
-          script: |
-            const { data } = await github.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'Name of Second Workflow',
-              ref: 'main'  // Adjust the branch if needed
-            });
-            console.log('Workflow run triggered:', data);
+          with:
+            github-token: ${{ steps.get_token.outputs.token }}
+            script: |
+              const { data } = await github.actions.createWorkflowDispatch({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                workflow_id: 'Name of Second Workflow',
+                ref: 'main'  // Adjust the branch if needed
+              });
+              console.log('Workflow run triggered:', data);
             
 
 
