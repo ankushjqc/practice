@@ -10,4 +10,4 @@ ag.c:
 
 .PHONY: clean
 clean:
-	rm ag.*
+	rm -f ag.*
