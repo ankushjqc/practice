@@ -16,19 +16,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Get workflow run token
-        id: get_token
-        run: echo "::set-output name=token::${{ secrets.GITHUB_TOKEN }}"
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Trigger Second Workflow
-        uses: actions/github-script@v6
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          github-token: ${{ steps.get_token.outputs.token }}
-          script: |
-            const { data } = await github.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'Deploy',
-              ref: 'main'  // Adjust the branch if needed
-            });
-            console.log('Workflow run triggered:', data);      
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Deploy
+        run: node .github/scripts/trigger-second-workflow.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
