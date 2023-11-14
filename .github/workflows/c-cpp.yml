@@ -29,8 +29,8 @@ jobs:
       id: get_token
       run: echo "::set-output name=token::${{ secrets.GITHUB_TOKEN }}"
     - name: Trigger Second Workflow
-        uses: actions/github-script@v6
-          with:
+      uses: actions/github-script@v6
+      with:
             github-token: ${{ steps.get_token.outputs.token }}
             script: |
               const { data } = await github.actions.createWorkflowDispatch({
