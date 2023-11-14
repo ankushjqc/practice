@@ -1,10 +1,13 @@
-name: C/C++ CI
+name: BuildCI
 on:
   push:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]  
   workflow_dispatch:
+    workflows: ["Deploy"]
+    types:
+      - completed
   
 jobs:
   build:
