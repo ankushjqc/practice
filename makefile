@@ -5,7 +5,7 @@ all: hello.html ag
 
 # Rule to generate hello.html
 hello.html: hello.html.in
-	cp $< $@
+	cp $< html/$@
 
 ag: ag.o
 	cc ag.o -o ag # Runs third
@@ -20,4 +20,4 @@ ag.c:
 # Rule to clean generated files
 .PHONY: clean
 clean:
-	rm -f hello.html ag ag.*
+	rm -f hello.html ag ag.* html/hello.html
