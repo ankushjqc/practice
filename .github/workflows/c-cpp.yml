@@ -8,26 +8,14 @@ on:
     workflows: ["Deploy"]
     types:
       - completed
-  
-
-
+      
 jobs:
   trigger:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '14'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Deploy
-        run: node .github/scripts/trigger-second-workflow.js
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+      - name: make clean
+        run: make clean
+      - name: make 
+        run: make 
